@@ -1,4 +1,4 @@
-FROM php:8.4-fpm
+FROM php:8.4-fpm-alpine
 
 WORKDIR /var/www
 
@@ -28,8 +28,11 @@ RUN composer dump-autoload --optimize
 
 # In dev: storage & bootstrap/cache must be writable
 RUN chmod -R 777 storage bootstrap/cache
-RUN chown -R www-data:www-data storage bootstrap/cache
 
+# Create a non-root user — security best practice
+RUN groupadd -g 1000 www && useradd -u 1000 -ms /bin/bash -g www www
+
+USER www
 
 EXPOSE 9000
 
