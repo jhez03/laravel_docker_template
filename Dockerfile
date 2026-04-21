@@ -31,7 +31,7 @@ RUN chmod -R 777 storage bootstrap/cache
 # Create a non-root user — security best practice
 RUN addgroup -g 1000 www && adduser -u 1000 -D -G www www
 
-COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY infra/docker/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 ENTRYPOINT ["entrypoint.sh"]
@@ -43,4 +43,5 @@ USER www
 EXPOSE 9000
 
 CMD ["php-fpm"]
+
 
