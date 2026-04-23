@@ -29,3 +29,8 @@ install-breeze:
 	$(COMPOSE_BASE) exec php php artisan breeze:install
 	$(COMPOSE_DEV) up -d node nginx
 	@echo "✅ Done. Visit http://localhost"
+
+#laravel php artisan commands
+artisan-%:
+	$(COMPOSE_BASE) exec php php artisan $*
+
