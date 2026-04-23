@@ -9,10 +9,15 @@ echo "🚀 Starting Laravel container..."
 # fi
 
 # Generate app key if not set
-# if ! grep -q "APP_KEY=base64" .env; then
-#   echo "🔑 Generating app key..."
-#   php artisan key:generate
-# fi
+if ! grep -q "APP_KEY=base64" .env; then
+  echo "🔑 Generating app key..."
+  php artisan key:generate
+fi
+
+if [ ! -d "vendor" ]; then
+  echo "Installing Composer dependencies..."
+  composer install
+fi
 
 # Wait for MySQL
 echo "⏳ Waiting for database..."
