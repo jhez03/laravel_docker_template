@@ -26,6 +26,7 @@ try {
     new PDO('mysql:host=' . getenv('DB_HOST') . ';dbname=' . getenv('DB_DATABASE'), getenv('DB_USERNAME'), getenv('DB_PASSWORD'));
     echo 'DB connected';
 } catch (Exception \$e) {
+    echo 'DB error: ' . \$e->getMessage() . \"\n\";
     exit(1);
 }
 "; do
