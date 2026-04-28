@@ -5,7 +5,7 @@ up:
 	$(COMPOSE_DEV) up -d
 
 down:
-	$(COMPOSE_DEV) down
+	$(COMPOSE_DEV) down -v
 
 build:
 	$(COMPOSE_DEV) up -d --build
