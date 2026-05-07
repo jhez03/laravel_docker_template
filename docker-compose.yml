@@ -23,6 +23,8 @@ services:
 
   db:
     image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
     env_file:
       - .env.docker
     ports:
